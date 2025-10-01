@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+
+jobs:
+  dockerize:
+    runs-on: ubuntu-latest
+    env:
+      TARGET_ENV: ${{ inputs.env }}
+    steps:
+      - name: Show selected environment
+        run: echo "Running for env=${TARGET_ENV}"
